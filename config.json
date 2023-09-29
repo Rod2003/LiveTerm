@@ -12,15 +12,6 @@
   "resume_url": "https://drive.google.com/file/d/1-MqKEK5f1FL5AEm-RpiIW53qkEWmA88f/view?usp=sharing",
   "donate_url": "https://www.buymeacoffee.com/rodrigodav",
   "colors": {
-    "light": {
-      "background": "#D0C8C6",
-      "foreground": "#3B3228",
-      "yellow": "#F4BC87",
-      "green": "#BEB55B",
-      "gray": "#A89BB9",
-      "blue": "#8AB3B5",
-      "red": "#CB6077"
-    },
     "dark": {
       "background": "#3B3228",
       "foreground": "#D0C8C6",
