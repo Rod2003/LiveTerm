@@ -8,11 +8,7 @@ export const help = async (args: string[]): Promise<string> => {
   const commands = Object.keys(bin).sort().join(', ');
   var c = '';
   for (let i = 1; i <= Object.keys(bin).sort().length; i++) {
-    if (i % 7 === 0) {
-      c += Object.keys(bin).sort()[i - 1] + '\n';
-    } else {
-      c += Object.keys(bin).sort()[i - 1] + ' ';
-    }
+    c += Object.keys(bin).sort()[i - 1] + '\n';
   }
   return `Welcome! Here are all the available commands:
 \n${c}\n
@@ -22,23 +18,18 @@ Type 'sumfetch' to display summary.
 `;
 };
 
-/* Redirection
-export const repo = async (args: string[]): Promise<string> => {
-  window.open(`${config.repo}`);
-  return 'Opening Github repository...';
-};
-*/
-
 // About
 export const about = async (args: string[]): Promise<string> => {
-  return `Hi, I am ${config.name}. 
+  return `Hi, I am ${config.name}, or Rod for short.
+I have a passion for building software products with visible impact. 
 Welcome to my website!
 More about me:
 'sumfetch' - short summary.
 'resume' - my latest resume.
-'readme' - my github readme.`;
+'linkedin - my LinkedIn profile`
 };
 
+// Resume
 export const resume = async (args: string[]): Promise<string> => {
   window.open(`${config.resume_url}`);
   return 'Opening resume...';
@@ -64,6 +55,7 @@ export const github = async (args: string[]): Promise<string> => {
   return 'Opening github...';
 };
 
+// LinkedIn
 export const linkedin = async (args: string[]): Promise<string> => {
   window.open(`https://www.linkedin.com/in/${config.social.linkedin}/`);
 
@@ -74,16 +66,6 @@ export const linkedin = async (args: string[]): Promise<string> => {
 export const google = async (args: string[]): Promise<string> => {
   window.open(`https://google.com/search?q=${args.join(' ')}`);
   return `Searching google for ${args.join(' ')}...`;
-};
-
-export const duckduckgo = async (args: string[]): Promise<string> => {
-  window.open(`https://duckduckgo.com/?q=${args.join(' ')}`);
-  return `Searching duckduckgo for ${args.join(' ')}...`;
-};
-
-export const bing = async (args: string[]): Promise<string> => {
-  window.open(`https://bing.com/search?q=${args.join(' ')}`);
-  return `Wow, really? You are using bing for ${args.join(' ')}?`;
 };
 
 export const reddit = async (args: string[]): Promise<string> => {
