@@ -79,10 +79,16 @@ export const Input = ({
   };
 
   return (
-    <div className="flex flex-row space-x-2">
+    <div className="flex flex-row space-x-2 border-[1px] rounded dark:border-white p-1">
       <label htmlFor="prompt" className="flex-shrink">
         <Ps1 />
       </label>
+
+      {/* {!command && (
+        <span className="text-[#808080] italic">
+          type command here ('about', 'projects', 'sudo', etc)
+        </span>
+      )} */}
 
       <input
         ref={inputRef}
@@ -99,6 +105,7 @@ export const Input = ({
         onKeyDown={onSubmit}
         autoComplete="off"
         spellCheck="false"
+        placeholder={`type command here ('about', 'projects', 'sudo', etc)`}
       />
     </div>
   );
