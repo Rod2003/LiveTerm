@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React from 'react';
+import React, {useState, useRef, useEffect, useCallback } from 'react';
 import config from '../../config.json';
 import { Input } from '../components/input';
 import { useHistory } from '../components/history/hook';
@@ -11,7 +11,7 @@ interface IndexPageProps {
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
-  const containerRef = React.useRef(null);
+  const containerRef = useRef(null);
   const {
     history,
     command,
@@ -22,18 +22,34 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
     setLastCommandIndex,
   } = useHistory([]);
 
-  const init = React.useCallback(() => setHistory(banner()), []);
+  const init = useCallback(() => setHistory(banner()), []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     init();
   }, [init]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inputRef.current) {
       inputRef.current.scrollIntoView();
       inputRef.current.focus({ preventScroll: true });
     }
   }, [history]);
+
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    const updateDate = () => {
+      const now = new Date();
+      const options: any = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      const formattedDate = now.toLocaleDateString(undefined, options);
+      setCurrentDate(formattedDate);
+    };
+
+    updateDate();
+    const intervalId = setInterval(updateDate, 1000);
+
+    return () => clearInterval(intervalId); 
+  }, []);
 
   return (
     <>
@@ -41,7 +57,12 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
         <title>{config.title}</title>
       </Head>
 
-      <div className="p-8 overflow-hidden h-full border-2 rounded border-light-yellow dark:border-dark-yellow display:flex flex-direction:row">
+      <div className="flex flex-row justify-between items-center pb-1 text-xl px-4 glowing">
+        <h1>rodrodrod.xyz</h1>
+        <div>{currentDate}</div>
+      </div>
+
+      <div className="p-8 overflow-hidden h-[94vh] border-2 rounded border-light-yellow dark:border-dark-yellow display:flex flex-direction:row">
         <div ref={containerRef} className="overflow-y-auto h-full overflow-x-auto">
           <History history={history} />
 
@@ -56,6 +77,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
             setLastCommandIndex={setLastCommandIndex}
             clearHistory={clearHistory}
           />
+
         </div>
       </div>
     </>

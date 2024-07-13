@@ -21,6 +21,10 @@ div#__next > div {
   overflow: auto;
 }
 
+.glowing {
+  text-shadow: 0 0 5px #aaaaaa;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
