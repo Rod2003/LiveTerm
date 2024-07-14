@@ -16,8 +16,13 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "../components/dialog";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "../components/hover-card";
+
 
 
 export const Input = ({
@@ -31,7 +36,7 @@ export const Input = ({
   setLastCommandIndex,
   clearHistory,
 }) => {
-  const [open, setOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const onSubmit = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     const commands: [string] = history
@@ -124,8 +129,8 @@ export const Input = ({
         </div>
         <div className="flex items-center">
           <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger onClick={() => setOpen(true)}>
+            <Tooltip key={1}>
+              <TooltipTrigger onClick={() => setDialogOpen(true)}>
                 <Info />
               </TooltipTrigger>
               <TooltipContent 
@@ -138,12 +143,63 @@ export const Input = ({
           </TooltipProvider>
         </div>
       </div>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="border-[1px] border-dark-white dark:border-dark-white z-50 rounded-[4px] text-dark-white dark:text-dark-white dark:bg-dark-background">
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="border-2 border-dark-yellow dark:border-dark-yellow z-50 rounded-[4px] text-dark-white dark:text-dark-white dark:bg-dark-background">
           <DialogHeader>
-            <DialogTitle>Welcome to my site!</DialogTitle>
-            <DialogDescription>
-              TEST
+            <DialogTitle>
+              <div>
+                Site Information
+              </div>
+              <div className="text-xs pt-1 text-dark-yellow tracking-wide">
+                Release 1.1
+              </div>
+            </DialogTitle>
+            <DialogDescription className="flex flex-col gap-1">
+              <div className="pt-2"></div>
+              <div className="text-sm dark:text-dark-green">General</div>
+              <div className="text-[16px]">
+                <span className="glowing">rodrodrod.xyz</span> is a portfolio website made by myself, <a className="underline" href='https://linkedin.com/in/rodrigo-delaguila'>Rodrigo Del Aguila</a>.
+              </div>
+              <div className="text-[16px] pt-2">
+                It is designed as a{' '}
+                <HoverCard key={2}>
+                  <HoverCardTrigger>
+                    <span className="underline cursor-pointer">shell interface</span>
+                  </HoverCardTrigger>
+                  <HoverCardContent 
+                    className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background" sideOffset={6}>
+                    A <span className="text-dark-green">shell interface</span> is a command-line interface used to interact with the operating system or application through text commands.
+                  </HoverCardContent>
+                </HoverCard>
+                {`, similar to bash - with a few common commands such as 'whoami', 'sudo', and 'ls'.`} 
+              </div>
+              <div className="text-[16px] pt-2">
+                There are also custom commands, some with{' '} 
+                <HoverCard key={2}>
+                  <HoverCardTrigger>
+                    <span className="underline cursor-pointer">API calls</span>
+                  </HoverCardTrigger>
+                  <HoverCardContent 
+                    className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background" 
+                    sideOffset={6}
+                  >
+                    An <span className="text-dark-green">API (Application Programming Interface) call</span> is a request made to an API endpoint to retrieve or send data between applications.
+                  </HoverCardContent>
+                </HoverCard>
+                {`, such as 'projects', 'weather', and 'resume'.`} 
+              </div>
+              <div className="pt-2"></div>
+              <div className="text-sm dark:text-dark-green">Usage</div>
+              <div className="text-[16px] pt-2">
+              </div>
+              <div className="pt-2"></div>
+              <div className="text-sm dark:text-dark-green">Tech stack</div>
+              <div className="text-[16px] pt-2">
+              </div>
+              <div className="pt-2"></div>
+              <div className="text-sm dark:text-dark-green">Releases</div>
+              <div className="text-[16px] pt-2">
+              </div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
