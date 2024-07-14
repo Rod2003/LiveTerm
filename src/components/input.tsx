@@ -129,7 +129,7 @@ export const Input = ({
                 <Info />
               </TooltipTrigger>
               <TooltipContent 
-                className="border-[1px] z-50 rounded-[4px] border-white dark:border-white mr-[60px]" 
+                className="border-[1px] z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background" 
                 sideOffset={10}
               >
                 Click for more info
