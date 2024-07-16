@@ -20,13 +20,14 @@ Type 'sumfetch' to display summary.
 
 // About
 export const about = async (args: string[]): Promise<string> => {
-  return `Hi, I am ${config.name}, or Rod for short.
+  return `Hi, I'm ${config.name}.
 I have a passion for building software products with visible impact. 
 Welcome to my website!
+
 More about me:
 'sumfetch' - short summary.
 'resume' - my latest resume.
-'linkedin - my LinkedIn profile`
+'linkedin - my LinkedIn profile.`;
 };
 
 // Resume
@@ -85,8 +86,7 @@ export const whoami = async (args: string[]): Promise<string> => {
 export const ls = async (args: string[]): Promise<string> => {
   console.log('here: ', args);
   if (args[0] === '-a') {
-    return (
-      `a 
+    return `a 
 bunch
 of 
 fake
@@ -95,17 +95,13 @@ directories
 .know
 .your
 .shell
-.commands!`
-    );
-  }
-  else {
-    return (
-      `a
+.commands!`;
+  } else {
+    return `a
 bunch
 of
 fake
-directories`
-    );
+directories`;
   }
 };
 

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, {useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import config from '../../config.json';
 import { Input } from '../components/input';
 import { useHistory } from '../components/history/hook';
@@ -40,7 +40,14 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
   useEffect(() => {
     const updateDate = () => {
       const now = new Date();
-      const options: any = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      const options: any = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      };
       const formattedDate = now.toLocaleDateString(undefined, options);
       setCurrentDate(formattedDate);
     };
@@ -48,7 +55,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
     updateDate();
     const intervalId = setInterval(updateDate, 1000);
 
-    return () => clearInterval(intervalId); 
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -62,8 +69,11 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
         <div>{currentDate}</div>
       </div>
 
-      <div className="p-8 overflow-hidden h-[94vh] border-2 rounded border-light-yellow dark:border-dark-yellow display:flex flex-direction:row">
-        <div ref={containerRef} className="overflow-y-auto h-full overflow-x-auto">
+      <div className="p-8 overflow-hidden h-[calc(94vh)] border-2 rounded border-light-yellow dark:border-dark-yellow display:flex flex-direction:row">
+        <div
+          ref={containerRef}
+          className="overflow-y-auto h-full overflow-x-auto"
+        >
           <History history={history} />
 
           <Input
@@ -77,7 +87,6 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
             setLastCommandIndex={setLastCommandIndex}
             clearHistory={clearHistory}
           />
-
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import config from '../../../config.json';
 
 const sumfetch = async (args: string[]): Promise<string> => {
-    return `
+  return `
            ▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄                 
         ▄▓▓▀ ▄▓▓▀▓▓▓▀▓▓▄ ▀▀▓▓▄               sumfetch
       ▓▓▀  ▄▓▀   ▐▓▓  ▀▓▓    ▓▓▄            -----------
@@ -18,6 +18,6 @@ const sumfetch = async (args: string[]): Promise<string> => {
         ▀▓▓▄▄ ▀▓▓▄▓▓▄▓▓▓▄▄▓▓▀                <u><a href="${config.donate_url}" target="_blank">buymeacoffee.com/rodrigodav</a></u>
             ▀▓▓▓▓▓▓▓▓▓▓▓▀▀                  
 `;
-  };
+};
 
 export default sumfetch;
