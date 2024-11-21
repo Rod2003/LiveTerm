@@ -324,6 +324,11 @@ export const Input = ({
               <div className="text-sm dark:text-dark-green">Releases</div>
               <div className="text-[16px]">
                 <div className="text-xs pt-1 text-dark-yellow tracking-wide">
+                  Release 1.2
+                </div>
+                <li className="pt-1">Added typing animation</li>
+                <li className="pt-1">Improved speed of commands with caching</li>
+                <div className="text-xs pt-1 text-dark-yellow tracking-wide">
                   Release 1.1
                 </div>
                 <li className="pt-1">Added real-time date</li>

@@ -1,5 +1,8 @@
 import React from 'react';
 import * as bin from './bin';
+import { CommandCache } from './cache';
+
+const commandCache = new CommandCache();
 
 export const shell = async (
   command: string,
@@ -12,6 +15,7 @@ export const shell = async (
 
   if (args[0] === 'clear') {
     clearHistory();
+    commandCache.clear();
   } else if (command === '') {
     setHistory('');
   } else if (Object.keys(bin).indexOf(args[0]) === -1) {
@@ -19,8 +23,16 @@ export const shell = async (
       `shell: command not found: ${args[0]}. Try 'help' to get started.`,
     );
   } else {
-    const output = await bin[args[0]](args.slice(1));
-    setHistory(output);
+    const cacheKey = command;
+    const cachedResult = commandCache.get(cacheKey);
+
+    if (cachedResult) {
+      setHistory(cachedResult);
+    } else {
+      const output = await bin[args[0]](args.slice(1));
+      commandCache.set(cacheKey, output);
+      setHistory(output);
+    }
   }
 
   setCommand('');

@@ -19,7 +19,7 @@ export const History: React.FC<{ history: Array<HistoryInterface> }> = ({
           <TypeWriter
             text={entry.output}
             className="whitespace-pre-wrap mb-2"
-            speed={2}
+            speed={1}
           />
         </div>
       ))}

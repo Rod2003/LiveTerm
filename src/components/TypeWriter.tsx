@@ -16,6 +16,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     if (currentIndex < text.length && !isPaused) {
@@ -25,25 +26,25 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         
         // Add random variation to typing speed
         const variation = Math.random() * 25;
-        const adjustedSpeed = Math.max(10, speed + variation - 12.5);
         
         // Pause briefly at punctuation
         if (['.', '!', '?', '\n'].includes(text[currentIndex])) {
           setIsPaused(true);
-          setTimeout(() => setIsPaused(false), 200);
+          setTimeout(() => setIsPaused(false), 50);
         }
       }, speed);
 
       return () => clearTimeout(timeoutId);
-    } else if (currentIndex >= text.length && onComplete) {
-      onComplete();
+    } else if (currentIndex >= text.length) {
+        setIsComplete(true);
+        onComplete?.();
     }
   }, [currentIndex, text, speed, isPaused, onComplete]);
 
   return (
     <div className={`font-mono ${className}`}>
-      {displayedText}
-      <span className="animate-pulse">▋</span>
+      <p dangerouslySetInnerHTML={{ __html: displayedText }} />
+      {!isComplete && <span className="animate-pulse">▋</span>}
     </div>
   );
 };
