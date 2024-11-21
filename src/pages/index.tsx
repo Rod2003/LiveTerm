@@ -5,6 +5,12 @@ import { Input } from '../components/input';
 import { useHistory } from '../components/history/hook';
 import { History } from '../components/history/History';
 import { banner } from '../utils/bin';
+import { StatsProvider } from '../contexts/statsContext';
+import dynamic from 'next/dynamic';
+// Dynamic import with SSR disabled
+const StatusBar = dynamic(() => import('../components/StatusBar'), {
+  ssr: false,
+});
 
 interface IndexPageProps {
   inputRef: React.MutableRefObject<HTMLInputElement>;
@@ -35,38 +41,14 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
     }
   }, [history]);
 
-  const [currentDate, setCurrentDate] = useState('');
-
-  useEffect(() => {
-    const updateDate = () => {
-      const now = new Date();
-      const options: any = {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-      };
-      const formattedDate = now.toLocaleDateString(undefined, options);
-      setCurrentDate(formattedDate);
-    };
-
-    updateDate();
-    const intervalId = setInterval(updateDate, 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
-    <>
+    <StatsProvider>
       <Head>
         <title>{config.title}</title>
       </Head>
 
       <div className="flex flex-row justify-between items-center pb-1 text-xl px-4 glowing">
         <h1>rodrodrod.xyz</h1>
-        <div>{currentDate}</div>
       </div>
 
       <div className="p-8 overflow-hidden h-[calc(94vh)] border-2 rounded border-light-yellow dark:border-dark-yellow display:flex flex-direction:row">
@@ -88,8 +70,9 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
             clearHistory={clearHistory}
           />
         </div>
+        <StatusBar />
       </div>
-    </>
+    </StatsProvider>
   );
 };
 

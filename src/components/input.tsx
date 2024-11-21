@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { commandExists } from '../utils/commandExists';
-import { shell } from '../utils/shell';
+import { createShell } from '../utils/shell';
 import { handleTabCompletion } from '../utils/tabCompletion';
 import { Ps1 } from './Ps1';
 import { Info } from 'lucide-react';
@@ -35,6 +35,7 @@ export const Input = ({
   clearHistory,
 }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const shell = createShell();
 
   const onSubmit = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     const commands: [string] = history
