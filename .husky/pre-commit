@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint
+# Add common Node.js installation paths to PATH
+export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin:$HOME/.nvm/versions/node/$(node -v)/bin"
+
+npm run lint
