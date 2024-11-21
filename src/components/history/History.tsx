@@ -1,6 +1,7 @@
 import React from 'react';
 import { History as HistoryInterface } from './interface';
 import { Ps1 } from '../Ps1';
+import TypeWriter from '../TypeWriter'; 
 
 export const History: React.FC<{ history: Array<HistoryInterface> }> = ({
   history,
@@ -13,19 +14,15 @@ export const History: React.FC<{ history: Array<HistoryInterface> }> = ({
             <div className="flex-shrink">
               <Ps1 />
             </div>
-
             <div className="flex-grow">{entry.command}</div>
           </div>
-
-          <p
+          <TypeWriter
+            text={entry.output}
             className="whitespace-pre-wrap mb-2"
-            style={{ lineHeight: 'normal' }}
-            dangerouslySetInnerHTML={{ __html: entry.output }}
+            speed={2}
           />
         </div>
       ))}
     </>
   );
 };
-
-export default History;
