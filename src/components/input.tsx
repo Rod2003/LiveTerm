@@ -148,7 +148,7 @@ export const Input = ({
             <DialogTitle>
               <div>Site Information</div>
               <div className="text-xs pt-1 text-dark-yellow tracking-wide">
-                Release 1.1
+                Release 1.2
               </div>
             </DialogTitle>
             <DialogDescription className="flex flex-col gap-1 max-h-[500px] overflow-y-auto">
@@ -178,6 +178,7 @@ export const Input = ({
                   <HoverCardContent
                     className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background"
                     sideOffset={6}
+                    side="top"
                   >
                     <p>
                       A <span className="text-dark-green">shell interface</span>{' '}
@@ -196,6 +197,7 @@ export const Input = ({
                   <HoverCardContent
                     className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background"
                     sideOffset={6}
+                    side="top"
                   >
                     <p>
                       An{' '}
@@ -232,6 +234,7 @@ export const Input = ({
                     <HoverCardContent
                       className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background"
                       sideOffset={6}
+                      side="top"
                     >
                       <p>
                         <span className="text-dark-green">Next.js</span> is a
@@ -250,6 +253,7 @@ export const Input = ({
                     <HoverCardContent
                       className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background"
                       sideOffset={6}
+                      side="top"
                     >
                       <p>
                         <span className="text-dark-green">React.js</span> is a
@@ -270,6 +274,7 @@ export const Input = ({
                     <HoverCardContent
                       className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background"
                       sideOffset={6}
+                      side="top"
                     >
                       <p>
                         <span className="text-dark-green">TypeScript</span> is
@@ -291,6 +296,7 @@ export const Input = ({
                     <HoverCardContent
                       className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background"
                       sideOffset={6}
+                      side="top"
                     >
                       <p>
                         <span className="text-dark-green">Tailwind CSS</span> is
@@ -310,6 +316,7 @@ export const Input = ({
                     <HoverCardContent
                       className="border-[1px] text-xs z-50 rounded-[4px] border-white dark:border-white dark:bg-dark-background"
                       sideOffset={6}
+                      side="top"
                     >
                       <p>
                         <span className="text-dark-green">Axios</span> is a
@@ -329,6 +336,8 @@ export const Input = ({
                 </div>
                 <li className="pt-1">Added typing animation</li>
                 <li className="pt-1">Improved speed of commands with caching</li>
+                <li className="pt-1">Stats bar for enhanced UI</li>
+                <li className="pt-1">Added tic-tac-toe and number guesser games</li>
                 <div className="text-xs pt-1 text-dark-yellow tracking-wide">
                   Release 1.1
                 </div>
